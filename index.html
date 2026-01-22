@@ -69,7 +69,9 @@
                         <a href="http://localhost:5173">
                             <button class="btn-primary-large">Get Started</button>
                         </a>
-                        <button class="btn-secondary-large" data-scroll-target="#technology">Watch Demo</button>
+                        <a href="#technology" style="text-decoration: none;">
+                            <button class="btn-secondary-large">Watch Demo</button>
+                        </a>
                     </div>
                     <div class="learn-more-container">
                         <a href="/about.html" class="btn-learn-more">Learn more about us →</a>
@@ -200,6 +202,9 @@
                     <h2 class="feature-heading">Streamlined AI Farm Management</h2>
                     <p class="feature-description">
                         A unified management system with AI-guided expense tracking. Enter farm parameters and get clear insights, a journey map, next steps, and precautions. Built-in chatbot assists daily operations, while disease and stage identification keeps ponds healthy.
+                    </p>
+                    <p class="feature-description" style="color: #7ec8ff; font-weight: 600; margin-bottom: 16px;">
+                        💡 Visit our <a href="/about.html#tech" style="color: #7ec8ff; text-decoration: underline;">About page</a> and click on the tech cards to explore detailed features with live demos!
                     </p>
                     <ul class="feature-list">
                         <li>
@@ -567,6 +572,22 @@
         </div>
     </footer>
 
-    <script src="script.js?v=2026-01-19"></script>
+    <!-- Tech Details Modal -->
+    <div id="techModal" class="tech-modal">
+        <div class="tech-modal-content">
+            <button class="tech-modal-close">&times;</button>
+            <div class="tech-modal-grid">
+                <div class="tech-modal-left">
+                    <h2 class="tech-modal-title"></h2>
+                    <div class="tech-modal-description"></div>
+                </div>
+                <div class="tech-modal-right">
+                    <div class="tech-modal-images"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js?v=2026-01-22-modal"></script>
 </body>
 </html>

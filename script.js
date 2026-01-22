@@ -363,3 +363,275 @@ if (totalSavingsCard) {
     savingsObserver.observe(totalSavingsCard);
 }
 
+
+// Tech Cards Modal System
+const techModal = document.getElementById('techModal');
+
+if (techModal) {
+    const techCards = document.querySelectorAll('.tech-card');
+    const modalClose = document.querySelector('.tech-modal-close');
+
+    const techData = {
+        apps: {
+            title: '📱 Smart Farm Management Apps',
+            features: [
+                'Real-time expense tracking with AI-powered insights and budget alerts',
+                'Complete pond inventory management with stock levels and health monitoring',
+                'Worker tracking and task assignment with performance analytics',
+                'Automated reporting with customizable dashboards',
+                'Mobile-first design for on-the-go farm management',
+                'Integrated chatbot for instant answers and guidance',
+                'Disease detection and stage identification with image recognition',
+                'Multi-pond comparison and yield optimization tools'
+            ],
+            images: [
+                'ai-aqua-app/Public/app_images/DashBoard.png',
+                'ai-aqua-app/Public/app_images/Chatbot.png',
+                'ai-aqua-app/Public/app_images/Documents_Upload.png',
+                'ai-aqua-app/Public/app_images/CreationSummary.png'
+            ]
+        },
+        iot: {
+            title: '📡 IoT Sensor Network',
+            features: [
+                'Advanced water quality sensors (DO, pH, temperature, salinity)',
+                'Real-time data streaming with 99.9% uptime',
+                'Low-power consumption with solar charging options',
+                'Weatherproof and corrosion-resistant design',
+                'Wireless connectivity with long-range transmission',
+                'Automatic calibration and self-diagnostics',
+                'Multi-parameter monitoring from single device',
+                'Cloud-based data storage with historical analytics'
+            ],
+            images: [
+                'ai-aqua-app/Public/app_images/ParameterLogging.png',
+                'ai-aqua-app/Public/app_images/Mineral_graphs.png',
+                'ai-aqua-app/Public/app_images/Step1_Pond_creation.png',
+                'ai-aqua-app/Public/app_images/Step2_pond_creation.png'
+            ]
+        },
+        ai: {
+            title: '🤖 AI-Powered Intelligence',
+            features: [
+                'Predictive analytics for disease outbreak prevention',
+                'Smart feeding recommendations based on growth patterns',
+                'Harvest optimization with yield forecasting',
+                'Pattern recognition for early problem detection',
+                'Cost-benefit analysis and ROI predictions',
+                'Automated alerts for critical parameter changes',
+                'Machine learning models trained on aquaculture data',
+                'Personalized insights tailored to your farm conditions'
+            ],
+            images: [
+                'ai-aqua-app/Public/app_images/Step3_Pond_creation.png',
+                'ai-aqua-app/Public/app_images/Step4_pondCreation.png',
+                'ai-aqua-app/Public/app_images/DashBoard.png',
+                'ai-aqua-app/Public/app_images/Mineral_graphs.png'
+            ]
+        }
+    };
+
+    function typeText(element, text, speed = 30) {
+        return new Promise((resolve) => {
+            let index = 0;
+            element.textContent = '';
+            element.classList.add('typing-text');
+            
+            const interval = setInterval(() => {
+                if (index < text.length) {
+                    element.textContent += text[index];
+                    index++;
+                } else {
+                    clearInterval(interval);
+                    element.classList.remove('typing-text');
+                    resolve();
+                }
+            }, speed);
+        });
+    }
+
+    let currentSlideIndex = 0;
+    let currentImages = [];
+
+    async function showTechModal(techType) {
+        const data = techData[techType];
+        if (!data) return;
+        
+        const modalTitle = document.querySelector('.tech-modal-title');
+        const modalDescription = document.querySelector('.tech-modal-description');
+        const modalImages = document.querySelector('.tech-modal-images');
+        
+        // Clear previous content
+        modalDescription.innerHTML = '';
+        modalImages.innerHTML = '';
+        currentSlideIndex = 0;
+        currentImages = data.images;
+        
+        // Set title
+        modalTitle.textContent = data.title;
+        
+        // Show modal
+        techModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        document.body.style.position = 'fixed';
+        document.body.style.width = '100%';
+        document.body.style.top = `-${window.scrollY}px`;
+        
+        // Display all features at once with fade-in animation
+        data.features.forEach((feature, i) => {
+            const featurePoint = document.createElement('div');
+            featurePoint.className = 'feature-point';
+            featurePoint.style.animationDelay = `${i * 0.05}s`;
+            featurePoint.style.opacity = '0';
+            featurePoint.style.animation = 'fadeInUp 0.5s ease forwards';
+            featurePoint.style.animationDelay = `${i * 0.1}s`;
+            
+            const bullet = document.createElement('div');
+            bullet.className = 'bullet';
+            
+            const textContainer = document.createElement('div');
+            textContainer.textContent = feature;
+            
+            featurePoint.appendChild(bullet);
+            featurePoint.appendChild(textContainer);
+            modalDescription.appendChild(featurePoint);
+        });
+        
+        // Create slideshow container
+        const slideshowContainer = document.createElement('div');
+        slideshowContainer.className = 'slideshow-container';
+        
+        // Add images
+        data.images.forEach((imgSrc, index) => {
+            const img = document.createElement('img');
+            img.src = imgSrc;
+            img.alt = `${data.title} screenshot ${index + 1}`;
+            img.className = 'slideshow-image';
+            if (index === 0) img.classList.add('active');
+            img.addEventListener('click', () => openLightbox(imgSrc));
+            slideshowContainer.appendChild(img);
+        });
+        
+        // Add navigation buttons if more than 1 image
+        if (data.images.length > 1) {
+            const prevBtn = document.createElement('button');
+            prevBtn.className = 'slideshow-nav slideshow-prev';
+            prevBtn.innerHTML = '❮';
+            prevBtn.addEventListener('click', () => changeSlide(-1));
+            
+            const nextBtn = document.createElement('button');
+            nextBtn.className = 'slideshow-nav slideshow-next';
+            nextBtn.innerHTML = '❯';
+            nextBtn.addEventListener('click', () => changeSlide(1));
+            
+            const counter = document.createElement('div');
+            counter.className = 'slideshow-counter';
+            counter.id = 'slideshow-counter';
+            counter.textContent = `1 / ${data.images.length}`;
+            
+            slideshowContainer.appendChild(prevBtn);
+            slideshowContainer.appendChild(nextBtn);
+            slideshowContainer.appendChild(counter);
+        }
+        
+        modalImages.appendChild(slideshowContainer);
+    }
+
+    function changeSlide(direction) {
+        const slides = document.querySelectorAll('.slideshow-image');
+        slides[currentSlideIndex].classList.remove('active');
+        
+        currentSlideIndex += direction;
+        if (currentSlideIndex >= slides.length) currentSlideIndex = 0;
+        if (currentSlideIndex < 0) currentSlideIndex = slides.length - 1;
+        
+        slides[currentSlideIndex].classList.add('active');
+        
+        const counter = document.getElementById('slideshow-counter');
+        if (counter) {
+            counter.textContent = `${currentSlideIndex + 1} / ${slides.length}`;
+        }
+    }
+
+    function openLightbox(imgSrc) {
+        let lightbox = document.getElementById('image-lightbox');
+        if (!lightbox) {
+            lightbox = document.createElement('div');
+            lightbox.id = 'image-lightbox';
+            lightbox.className = 'image-lightbox';
+            
+            const img = document.createElement('img');
+            img.className = 'lightbox-image';
+            
+            const closeBtn = document.createElement('button');
+            closeBtn.className = 'lightbox-close';
+            closeBtn.innerHTML = '×';
+            closeBtn.addEventListener('click', closeLightbox);
+            
+            lightbox.appendChild(img);
+            lightbox.appendChild(closeBtn);
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox) closeLightbox();
+            });
+            
+            document.body.appendChild(lightbox);
+        }
+        
+        const img = lightbox.querySelector('.lightbox-image');
+        img.src = imgSrc;
+        lightbox.classList.add('active');
+    }
+
+    function closeLightbox() {
+        const lightbox = document.getElementById('image-lightbox');
+        if (lightbox) {
+            lightbox.classList.remove('active');
+        }
+    }
+
+    function closeTechModal() {
+        techModal.classList.remove('active');
+        const scrollY = document.body.style.top;
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.width = '';
+        document.body.style.overflow = '';
+        window.scrollTo(0, parseInt(scrollY || '0') * -1);
+    }
+
+    // Event listeners for tech cards
+    techCards.forEach(card => {
+        card.addEventListener('click', () => {
+            const techType = card.dataset.tech;
+            showTechModal(techType);
+        });
+    });
+
+    // Event listeners for demo buttons on home page
+    document.querySelectorAll('[data-tech-demo]').forEach(button => {
+        button.addEventListener('click', () => {
+            const techType = button.dataset.techDemo;
+            showTechModal(techType);
+        });
+    });
+
+    // Close modal
+    if (modalClose) {
+        modalClose.addEventListener('click', closeTechModal);
+    }
+
+    // Close on outside click
+    techModal.addEventListener('click', (e) => {
+        if (e.target === techModal) {
+            closeTechModal();
+        }
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && techModal.classList.contains('active')) {
+            closeTechModal();
+        }
+    });
+}
+

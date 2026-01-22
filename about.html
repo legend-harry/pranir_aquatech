@@ -76,28 +76,34 @@
   </section>
 
   <!-- Technology -->
-  <section id="technology" class="about-section">
+  <section id="tech" class="about-section">
     <div class="container">
       <div class="section-header">
         <span class="section-tag">Technology</span>
         <h2 class="section-title">Apps • IoT Devices • AI</h2>
         <p class="section-subtitle">A unified stack that connects ponds, people, and processes</p>
+        <p class="section-subtitle" style="color: #7ec8ff; font-weight: 600; margin-top: 8px;">
+          👆 Click any card below to view detailed features and app screenshots
+        </p>
       </div>
       <div class="about-grid">
-        <div class="solution-card">
+        <div class="solution-card tech-card" data-tech="apps">
           <div class="solution-icon">📱</div>
           <h3 class="solution-title">Apps</h3>
           <p class="solution-description">Mobile and web apps designed for clarity and speed. Capture events, monitor health, and act on insights anywhere.</p>
+          <div class="card-click-hint">Click to explore →</div>
         </div>
-        <div class="solution-card">
+        <div class="solution-card tech-card" data-tech="iot">
           <div class="solution-icon">📡</div>
           <h3 class="solution-title">IoT Devices</h3>
           <p class="solution-description">Rugged sensors for DO, pH, temperature and more—streaming data securely with minimal power and maintenance.</p>
+          <div class="card-click-hint">Click to explore →</div>
         </div>
-        <div class="solution-card">
+        <div class="solution-card tech-card" data-tech="ai">
           <div class="solution-icon">🤖</div>
           <h3 class="solution-title">AI Intelligence</h3>
           <p class="solution-description">Pattern detection and recommendations tailored to your ponds—anticipate risks, optimize feeding, and plan harvests.</p>
+          <div class="card-click-hint">Click to explore →</div>
         </div>
       </div>
     </div>
@@ -173,6 +179,20 @@
     </div>
   </footer>
 
-  <script src="script.js?v=2026-01-20"></script>
-</body>
-</html>
+  <!-- Tech Details Modal -->
+  <div id="techModal" class="tech-modal">
+    <div class="tech-modal-content">
+      <button class="tech-modal-close">&times;</button>
+      <div class="tech-modal-grid">
+        <div class="tech-modal-left">
+          <h2 class="tech-modal-title"></h2>
+          <div class="tech-modal-description"></div>
+        </div>
+        <div class="tech-modal-right">
+          <div class="tech-modal-images"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js?v=2026-01-22-modal"></script>
