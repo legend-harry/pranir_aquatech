@@ -125,7 +125,7 @@ body {
 
 /* Navigation */
 .navbar {
-    position: fixed;
+    position: relative;
     top: 0;
     left: 0;
     right: 0;
@@ -148,6 +148,27 @@ body {
     display: flex;
     align-items: center;
     gap: 12px;
+}
+
+.logo-img {
+    height: 40px;
+    width: 40px;
+    object-fit: contain;
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+}
+
+.footer-logo-img {
+    height: 32px;
+    width: 32px;
+    object-fit: contain;
+    border-radius: 50%;
+}
+
+/* Slightly smaller logo on About page */
+.about-page .logo-img {
+    height: 36px;
+    width: 36px;
 }
 
 .logo-text {
@@ -261,7 +282,7 @@ body {
     display: flex;
     align-items: center;
     overflow: hidden;
-    margin-top: 60px;
+    margin-top: 0;
 }
 
 .hero-background {
@@ -491,8 +512,27 @@ body {
 .hero-subtitle {
     font-size: 20px;
     color: #a0afc0;
-    margin-bottom: 40px;
+    margin-bottom: 24px;
     line-height: 1.6;
+}
+
+.hero-motto {
+    font-size: 18px;
+    color: #ffffff;
+    margin-bottom: 40px;
+    line-height: 1.8;
+    padding: 24px 28px;
+    background: linear-gradient(135deg, rgba(126, 200, 255, 0.25) 0%, rgba(109, 181, 232, 0.15) 100%);
+    border: 2px solid #7ec8ff;
+    border-radius: 12px;
+    font-weight: 600;
+    box-shadow: 0 8px 24px rgba(126, 200, 255, 0.2), inset 0 0 20px rgba(126, 200, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.hero-motto strong {
+    color: #a8d8ff;
+    font-weight: 700;
 }
 
 .hero-cta {
@@ -1418,6 +1458,27 @@ body {
     
     .mobile-menu-btn {
         display: flex;
+    }
+
+    /* Mobile menu opened state */
+    .nav-menu.active {
+        display: flex;
+        position: absolute;
+        top: 64px;
+        right: 24px;
+        left: 24px;
+        flex-direction: column;
+        gap: 12px;
+        background: rgba(15, 20, 25, 0.95);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(168, 216, 255, 0.2);
+        padding: 16px;
+        border-radius: 12px;
+        z-index: 1001;
+    }
+
+    .nav-menu.active a {
+        color: #a8d8ff;
     }
     
     .hero {
