@@ -16,14 +16,16 @@
         <div class="container">
             <div class="nav-wrapper">
                 <div class="logo">
-                    <img src="ai-aqua-app/Public/logo/Pranir_logo.png" alt="Pranir AquaTech Logo" class="logo-img" />
+                    <img src="Public/logo/Pranir_logo.png" alt="Pranir AquaTech Logo" class="logo-img" />
                     <span class="logo-text">Pranir AquaTech</span>
                 </div>
                 <div class="nav-menu">
                     <a href="#solutions">Solutions</a>
+                    <a href="#how-it-works">How It Works</a>
                     <a href="#technology">Technology</a>
+                    <a href="#infrastructure">Infrastructure</a>
                     <a href="#sustainability">Sustainability</a>
-                       <a href="/about.html">About</a>
+                    <a href="/about.html">About</a>
                     <a href="http://localhost:5173" class="btn-primary-large">Sign Up</a>
                 </div>
                 <button class="mobile-menu-btn" id="mobileMenuBtn">
@@ -55,15 +57,19 @@
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
+                    <div class="system-status">
+                        <span class="status-dot"></span>
+                        <span class="status-text">System Active · AI Models Running</span>
+                    </div>
                     <h1 class="hero-title">
-                        Aquaculture Meets 
-                        <span class="gradient-text">Smart Technology</span>
+                        AI Infrastructure for 
+                        <span class="gradient-text">Modern Aquaculture</span>
                     </h1>
                     <p class="hero-subtitle">
-                        Transform your farming operation with IoT-powered monitoring and intelligent farm management. Real-time data guidance and sustainable aquaculture solutions built for modern farmers.
+                        Predictive intelligence platform powered by real-time IoT sensors, time-series analytics, and machine learning. Transform raw data into actionable insights that optimize yields, reduce mortality, and maximize profitability.
                     </p>
                     <p class="hero-motto">
-                        <strong>Our Motto:</strong> Invent affordable technology and tools to improve efficiency and reduce costs with a deep focus on aquaculture.
+                        <strong>Powered by:</strong> Multi-layer AI models for mortality prediction, feed optimization, and disease risk detection.
                     </p>
                     <div class="hero-cta">
                         <a href="http://localhost:5173">
@@ -78,21 +84,21 @@
                     </div>
                     <div class="hero-stats">
                         <div class="stat-item">
-                            <div class="stat-number">40%</div>
-                            <div class="stat-label">Increased Yield</div>
+                            <div class="stat-number" data-target="18">0</div>
+                            <div class="stat-label">Feed Optimization</div>
                         </div>
                         <div class="stat-item">
-                            <div class="stat-number">60%</div>
-                            <div class="stat-label">Water Savings</div>
+                            <div class="stat-number" data-target="12">0</div>
+                            <div class="stat-label">Survival Improvement</div>
                         </div>
                         <div class="stat-item">
-                            <div class="stat-number">24/7</div>
-                            <div class="stat-label">Monitoring</div>
+                            <div class="stat-number" data-target="30">0</div>
+                            <div class="stat-label">Faster Disease Response</div>
                         </div>
                     </div>
                 </div>
                 <div class="hero-image">
-                    <img src="ai-aqua-app/Public/pond/Shrimp2.jpg" alt="Sustainable Aquaculture - Shrimp Farming">
+                    <img src="Public/pond/Shrimp2.jpg" alt="Sustainable Aquaculture - Shrimp Farming">
                 </div>
             </div>
         </div>
@@ -193,6 +199,133 @@
         </div>
     </section>
 
+    <!-- How It Works - AI Pipeline Section -->
+    <section class="ai-pipeline" id="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Powered by Predictive Intelligence</span>
+                <h2 class="section-title">How Our AI Infrastructure Works</h2>
+                <p class="section-subtitle">
+                    From raw sensor data to intelligent recommendations in milliseconds
+                </p>
+            </div>
+            <div class="pipeline-flow">
+                <div class="pipeline-step" data-step="1">
+                    <div class="step-number">01</div>
+                    <div class="step-icon">
+                        <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
+                            <circle cx="28" cy="28" r="26" stroke="#7ec8ff" stroke-width="2" opacity="0.3"/>
+                            <circle cx="28" cy="28" r="18" stroke="#7ec8ff" stroke-width="2"/>
+                            <path d="M28 20V28L34 34" stroke="#7ec8ff" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="step-title">Data Ingestion</h3>
+                    <p class="step-description">Real-time collection from IoT sensors, manual logs, weather APIs, and historical data streams</p>
+                    <div class="step-tags">
+                        <span class="tag">IoT Sensors</span>
+                        <span class="tag">Manual Logs</span>
+                        <span class="tag">Weather APIs</span>
+                    </div>
+                </div>
+                <div class="pipeline-connector">
+                    <svg width="100" height="4" viewBox="0 0 100 4">
+                        <line x1="0" y1="2" x2="100" y2="2" stroke="#7ec8ff" stroke-width="2" stroke-dasharray="5,5">
+                            <animate attributeName="stroke-dashoffset" from="10" to="0" dur="1s" repeatCount="indefinite"/>
+                        </line>
+                    </svg>
+                </div>
+                <div class="pipeline-step" data-step="2">
+                    <div class="step-number">02</div>
+                    <div class="step-icon">
+                        <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
+                            <rect x="12" y="12" width="32" height="32" rx="4" stroke="#7ec8ff" stroke-width="2"/>
+                            <path d="M20 28H36M28 20V36" stroke="#7ec8ff" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="step-title">Time-Series Processing</h3>
+                    <p class="step-description">Advanced analytics pipeline processing millions of data points with historical pattern modeling</p>
+                    <div class="step-tags">
+                        <span class="tag">Real-Time Analytics</span>
+                        <span class="tag">Pattern Recognition</span>
+                    </div>
+                </div>
+                <div class="pipeline-connector">
+                    <svg width="100" height="4" viewBox="0 0 100 4">
+                        <line x1="0" y1="2" x2="100" y2="2" stroke="#7ec8ff" stroke-width="2" stroke-dasharray="5,5">
+                            <animate attributeName="stroke-dashoffset" from="10" to="0" dur="1s" repeatCount="indefinite"/>
+                        </line>
+                    </svg>
+                </div>
+                <div class="pipeline-step" data-step="3">
+                    <div class="step-number">03</div>
+                    <div class="step-icon">
+                        <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
+                            <path d="M28 12L36 24H20L28 12Z" stroke="#7ec8ff" stroke-width="2"/>
+                            <circle cx="28" cy="36" r="8" stroke="#7ec8ff" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3 class="step-title">AI Model Layer</h3>
+                    <p class="step-description">Multi-layer neural networks trained on aquaculture-specific datasets for predictive insights</p>
+                    <div class="step-tags">
+                        <span class="tag">Mortality Prediction</span>
+                        <span class="tag">Feed Optimization</span>
+                        <span class="tag">Disease Detection</span>
+                    </div>
+                </div>
+                <div class="pipeline-connector">
+                    <svg width="100" height="4" viewBox="0 0 100 4">
+                        <line x1="0" y1="2" x2="100" y2="2" stroke="#7ec8ff" stroke-width="2" stroke-dasharray="5,5">
+                            <animate attributeName="stroke-dashoffset" from="10" to="0" dur="1s" repeatCount="indefinite"/>
+                        </line>
+                    </svg>
+                </div>
+                <div class="pipeline-step" data-step="4">
+                    <div class="step-number">04</div>
+                    <div class="step-icon">
+                        <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
+                            <path d="M14 28L24 38L42 18" stroke="#7ec8ff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="step-title">Actionable Output</h3>
+                    <p class="step-description">Clear, prioritized recommendations with confidence scores and profit impact forecasting</p>
+                    <div class="step-tags">
+                        <span class="tag">Risk Scores</span>
+                        <span class="tag">Smart Alerts</span>
+                        <span class="tag">Profit Forecasting</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Model Confidence Visualization -->
+            <div class="model-confidence-section">
+                <h3 class="confidence-title">Live Model Performance</h3>
+                <div class="confidence-grid">
+                    <div class="confidence-card">
+                        <div class="confidence-label">Mortality Prediction</div>
+                        <div class="confidence-meter">
+                            <div class="confidence-bar" data-confidence="94"></div>
+                        </div>
+                        <div class="confidence-value">94% Accuracy</div>
+                    </div>
+                    <div class="confidence-card">
+                        <div class="confidence-label">Feed Efficiency</div>
+                        <div class="confidence-meter">
+                            <div class="confidence-bar" data-confidence="91"></div>
+                        </div>
+                        <div class="confidence-value">91% Accuracy</div>
+                    </div>
+                    <div class="confidence-card">
+                        <div class="confidence-label">Disease Risk</div>
+                        <div class="confidence-meter">
+                            <div class="confidence-bar" data-confidence="89"></div>
+                        </div>
+                        <div class="confidence-value">89% Accuracy</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Feature Showcase -->
     <section class="feature-showcase" id="technology">
         <div class="container">
@@ -235,22 +368,71 @@
                             <div class="mockup-dots">
                                 <span></span><span></span><span></span>
                             </div>
+                            <div class="mockup-title">AI Command Center</div>
                         </div>
                         <div class="mockup-content">
-                            <div class="metric-card">
-                                <div class="metric-label">Dissolved Oxygen</div>
-                                <div class="metric-value">8.2 <span>mg/L</span></div>
-                                <div class="metric-status optimal">Optimal</div>
+                            <!-- Risk Score Widget -->
+                            <div class="widget-card risk-score-widget">
+                                <div class="widget-header">
+                                    <span class="widget-label">Risk Score</span>
+                                    <span class="widget-status live">● LIVE</span>
+                                </div>
+                                <div class="risk-meter">
+                                    <svg viewBox="0 0 200 120" class="risk-gauge">
+                                        <path d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="rgba(126, 200, 255, 0.2)" stroke-width="12"/>
+                                        <path d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="#7ec8ff" stroke-width="12" stroke-dasharray="251" stroke-dashoffset="188" class="risk-gauge-fill"/>
+                                        <text x="100" y="85" text-anchor="middle" class="risk-value">24</text>
+                                        <text x="100" y="105" text-anchor="middle" class="risk-label">Low Risk</text>
+                                    </svg>
+                                </div>
                             </div>
-                            <div class="metric-card">
-                                <div class="metric-label">pH Level</div>
-                                <div class="metric-value">7.4</div>
-                                <div class="metric-status optimal">Optimal</div>
+                            
+                            <!-- Time Series Graph -->
+                            <div class="widget-card timeseries-widget">
+                                <div class="widget-header">
+                                    <span class="widget-label">Dissolved Oxygen Trend</span>
+                                    <span class="widget-timeframe">24H</span>
+                                </div>
+                                <svg viewBox="0 0 300 100" class="timeseries-chart">
+                                    <defs>
+                                        <linearGradient id="chartGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                            <stop offset="0%" style="stop-color:#7ec8ff;stop-opacity:0.3" />
+                                            <stop offset="100%" style="stop-color:#7ec8ff;stop-opacity:0" />
+                                        </linearGradient>
+                                    </defs>
+                                    <path d="M 10 80 Q 50 60, 80 50 T 150 45 T 220 40 T 290 35" fill="none" stroke="#7ec8ff" stroke-width="2" class="chart-line"/>
+                                    <path d="M 10 80 Q 50 60, 80 50 T 150 45 T 220 40 T 290 35 L 290 100 L 10 100 Z" fill="url(#chartGradient)" class="chart-area"/>
+                                    <circle cx="290" cy="35" r="4" fill="#7ec8ff" class="chart-point"/>
+                                </svg>
+                                <div class="chart-value">8.2 mg/L <span class="trend-up">↑ 0.3</span></div>
                             </div>
-                            <div class="metric-card">
-                                <div class="metric-label">Temperature</div>
-                                <div class="metric-value">24°C</div>
-                                <div class="metric-status optimal">Optimal</div>
+                            
+                            <!-- Metrics Grid -->
+                            <div class="metrics-grid-widget">
+                                <div class="metric-mini">
+                                    <div class="metric-label">pH Level</div>
+                                    <div class="metric-value">7.4</div>
+                                    <div class="metric-status optimal">Optimal</div>
+                                </div>
+                                <div class="metric-mini">
+                                    <div class="metric-label">Temperature</div>
+                                    <div class="metric-value">24°C</div>
+                                    <div class="metric-status optimal">Optimal</div>
+                                </div>
+                                <div class="metric-mini">
+                                    <div class="metric-label">Salinity</div>
+                                    <div class="metric-value">32 ppt</div>
+                                    <div class="metric-status optimal">Optimal</div>
+                                </div>
+                            </div>
+                            
+                            <!-- AI Recommendation -->
+                            <div class="widget-card ai-recommendation">
+                                <div class="recommendation-icon">🤖</div>
+                                <div class="recommendation-text">
+                                    <strong>AI Recommendation:</strong> Reduce feeding rate by 12% - model predicts optimal FCR improvement
+                                </div>
+                                <div class="recommendation-confidence">Confidence: 92%</div>
                             </div>
                         </div>
                     </div>
@@ -462,6 +644,96 @@
         </div>
     </section>
 
+    <!-- Enterprise Infrastructure Section -->
+    <section class="enterprise-section" id="infrastructure">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Enterprise Ready</span>
+                <h2 class="section-title">Built on Scalable Cloud Infrastructure</h2>
+                <p class="section-subtitle">
+                    Production-grade architecture designed for mission-critical aquaculture operations
+                </p>
+            </div>
+            <div class="enterprise-grid">
+                <div class="enterprise-card">
+                    <div class="enterprise-icon">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                            <rect width="48" height="48" rx="12" fill="rgba(126, 200, 255, 0.15)"/>
+                            <path d="M24 14V34M14 24H34" stroke="#7ec8ff" stroke-width="2.5" stroke-linecap="round"/>
+                            <circle cx="24" cy="14" r="3" stroke="#7ec8ff" stroke-width="2"/>
+                            <circle cx="24" cy="34" r="3" stroke="#7ec8ff" stroke-width="2"/>
+                            <circle cx="14" cy="24" r="3" stroke="#7ec8ff" stroke-width="2"/>
+                            <circle cx="34" cy="24" r="3" stroke="#7ec8ff" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3 class="enterprise-title">Secure Cloud Architecture</h3>
+                    <p class="enterprise-description">Multi-region deployment with 99.9% uptime SLA. End-to-end encryption for all data transmission and storage.</p>
+                </div>
+                <div class="enterprise-card">
+                    <div class="enterprise-icon">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                            <rect width="48" height="48" rx="12" fill="rgba(126, 200, 255, 0.15)"/>
+                            <path d="M12 24L22 16L32 22L40 18" stroke="#7ec8ff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M12 32L22 24L32 30L40 26" stroke="#7ec8ff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/>
+                        </svg>
+                    </div>
+                    <h3 class="enterprise-title">Real-Time Analytics Pipeline</h3>
+                    <p class="enterprise-description">Process millions of data points per second with sub-second latency. Stream processing with Apache Kafka.</p>
+                </div>
+                <div class="enterprise-card">
+                    <div class="enterprise-icon">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                            <rect width="48" height="48" rx="12" fill="rgba(126, 200, 255, 0.15)"/>
+                            <rect x="14" y="14" width="20" height="20" rx="2" stroke="#7ec8ff" stroke-width="2.5"/>
+                            <path d="M20 18V30M24 18V30M28 18V30" stroke="#7ec8ff" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="enterprise-title">Scalable Data Storage</h3>
+                    <p class="enterprise-description">Time-series optimized databases handling petabytes of sensor data. Automated backup and disaster recovery.</p>
+                </div>
+                <div class="enterprise-card">
+                    <div class="enterprise-icon">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                            <rect width="48" height="48" rx="12" fill="rgba(126, 200, 255, 0.15)"/>
+                            <circle cx="24" cy="20" r="5" stroke="#7ec8ff" stroke-width="2.5"/>
+                            <path d="M16 34C16 29.5817 19.5817 26 24 26C28.4183 26 32 29.5817 32 34" stroke="#7ec8ff" stroke-width="2.5" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="enterprise-title">Role-Based Access Control</h3>
+                    <p class="enterprise-description">Granular permissions and audit logging. SSO integration with enterprise identity providers.</p>
+                </div>
+            </div>
+            
+            <!-- Resources Section -->
+            <div class="enterprise-resources">
+                <div class="resource-card">
+                    <div class="resource-icon">📄</div>
+                    <div class="resource-content">
+                        <h4>Technical Whitepaper</h4>
+                        <p>Deep dive into our AI architecture and model training methodology</p>
+                    </div>
+                    <a href="#" class="resource-link">Download PDF →</a>
+                </div>
+                <div class="resource-card">
+                    <div class="resource-icon">🗺️</div>
+                    <div class="resource-content">
+                        <h4>Product Roadmap</h4>
+                        <p>See what features and integrations we're building next</p>
+                    </div>
+                    <a href="#" class="resource-link">View Roadmap →</a>
+                </div>
+                <div class="resource-card">
+                    <div class="resource-icon">📊</div>
+                    <div class="resource-content">
+                        <h4>API Documentation</h4>
+                        <p>Complete REST API reference for custom integrations</p>
+                    </div>
+                    <a href="#" class="resource-link">Read Docs →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Register / Contact Section -->
     <section class="register-section" id="contact">
         <div class="container">
@@ -526,11 +798,11 @@
             <div class="footer-content">
                 <div class="footer-column">
                     <div class="footer-logo">
-                        <img src="ai-aqua-app/Public/logo/Pranir_logo.png" alt="Pranir AquaTech Logo" class="footer-logo-img" />
+                        <img src="Public/logo/Pranir_logo.png" alt="Pranir AquaTech Logo" class="footer-logo-img" />
                         <span>Pranir AquaTech</span>
                     </div>
                     <p class="footer-description">
-                        Pioneering sustainable aquaculture solutions for a better tomorrow.
+                        AI Infrastructure for Modern Aquaculture · Building the Future of Farming
                     </p>
                 </div>
                 <div class="footer-column">
