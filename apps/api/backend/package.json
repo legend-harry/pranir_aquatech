@@ -1,0 +1,29 @@
+{
+  "name": "pranir-aquatech-backend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "tsx --watch src/api/index.ts",
+    "genkit:dev": "genkit start -- tsx src/ai/dev.ts",
+    "genkit:watch": "genkit start -- tsx --watch src/ai/dev.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "seed": "tsx scripts/seed.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@genkit-ai/googleai": "^1.14.1",
+    "@genkit-ai/next": "^1.14.1",
+    "dotenv": "^16.5.0",
+    "firebase": "^11.0.0",
+    "firebase-admin": "^12.0.0",
+    "genkit": "^1.14.1",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "genkit-cli": "^1.14.1",
+    "tsx": "^4.16.2",
+    "typescript": "^5"
+  }
+}

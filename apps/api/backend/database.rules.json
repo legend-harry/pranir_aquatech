@@ -1,0 +1,55 @@
+{
+  "rules": {
+    // Deny by default
+    ".read": false,
+    ".write": false,
+
+    // Legacy projects stored in RTDB (migration-only read)
+    // Make read public to avoid auth timing issues during client-side import
+    "projects": {
+      ".read": true,
+      // Keep writes disabled; Firestore is source of truth
+      ".write": false
+    },
+
+    // Shrimp farming data (ponds, daily logs, feed charts, docs)
+    // TEMP: allow any authenticated user to read/write their shrimp namespace until profile IDs are unified to auth.uid
+    "shrimp": {
+      "$profileId": {
+        ".read": "auth != null",
+        ".write": "auth != null"
+      }
+    },
+
+    // File storage using base64 in Realtime Database
+    "files": {
+      "$userId": {
+        ".read": "auth != null && auth.uid == $userId",
+        ".write": "auth != null && auth.uid == $userId"
+      }
+    },
+
+    // Partner profiles and data
+    "partnerProfiles": {
+      "$userId": {
+        ".read": "auth != null && auth.uid == $userId",
+        ".write": "auth != null && auth.uid == $userId"
+      }
+    },
+
+    // Approved reports - partners can write, customers can read reports sent to their mobile number
+    "approvedReports": {
+      "$mobile": {
+        ".read": "auth != null && root.child('approvedReports').child($mobile).exists()",
+        "$partnerId": {
+          ".read": "auth != null && root.child('approvedReports').child($mobile).exists()",
+          ".write": "auth != null && auth.uid == $partnerId",
+          "$reportId": {
+            ".read": "auth != null && root.child('approvedReports').child($mobile).child($partnerId).child($reportId).exists()",
+            ".write": "auth != null && auth.uid == $partnerId"
+          }
+        }
+      }
+    }
+  }
+}
