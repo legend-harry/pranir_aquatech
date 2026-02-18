@@ -1,0 +1,185 @@
+# ==================================================
+# 🦐 Shrimp AI - Docker Compose Configuration
+# Multi-service deployment for production
+# ==================================================
+
+version: '3.8'
+
+services:
+  # ============================================
+  # Main LLM Service
+  # ============================================
+  llm-service:
+    build:
+      context: .
+      dockerfile: ./deployment/Dockerfile.llm
+    container_name: shrimp-llm
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./llm_service/models:/app/llm_service/models
+      - ./training_data:/app/training_data
+      - ./logs:/app/logs
+    environment:
+      - LLM_MODEL_NAME=${LLM_MODEL_NAME:-microsoft/phi-2}
+      - LLM_DEVICE=${LLM_DEVICE:-cpu}
+      - API_PORT=8000
+      - ENABLE_RAG_SYSTEM=true
+      - LOG_LEVEL=INFO
+    depends_on:
+      - chromadb
+      - redis
+    networks:
+      - shrimp-network
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: '4'
+          memory: 8G
+        reservations:
+          cpus: '2'
+          memory: 4G
+  
+  # ============================================
+  # ChromaDB Vector Database
+  # ============================================
+  chromadb:
+    image: chromadb/chroma:latest
+    container_name: shrimp-chromadb
+    ports:
+      - "8001:8000"
+    volumes:
+      - ./rag_system/knowledge_db:/chroma/chroma
+    environment:
+      - ANONYMIZED_TELEMETRY=False
+      - ALLOW_RESET=True
+    networks:
+      - shrimp-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/v1/heartbeat"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+  
+  # ============================================
+  # Computer Vision Service
+  # ============================================
+  vision-service:
+    build:
+      context: .
+      dockerfile: ./deployment/Dockerfile.vision
+    container_name: shrimp-vision
+    ports:
+      - "8002:8002"
+    volumes:
+      - ./vision_service/models:/app/vision_service/models
+      - ./uploads:/app/uploads
+    environment:
+      - VISION_API_PORT=8002
+      - VISION_MODEL_PATH=/app/vision_service/models
+      - LOG_LEVEL=INFO
+    networks:
+      - shrimp-network
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 4G
+  
+  # ============================================
+  # Redis Cache
+  # ============================================
+  redis:
+    image: redis:7-alpine
+    container_name: shrimp-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    command: redis-server --appendonly yes
+    networks:
+      - shrimp-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+  
+  # ============================================
+  # Nginx Reverse Proxy
+  # ============================================
+  nginx:
+    image: nginx:alpine
+    container_name: shrimp-nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./deployment/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./deployment/ssl:/etc/nginx/ssl:ro
+    depends_on:
+      - llm-service
+      - vision-service
+    networks:
+      - shrimp-network
+    restart: unless-stopped
+  
+  # ============================================
+  # Prometheus Monitoring
+  # ============================================
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: shrimp-prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./deployment/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus-data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+    networks:
+      - shrimp-network
+    restart: unless-stopped
+  
+  # ============================================
+  # Grafana Dashboard
+  # ============================================
+  grafana:
+    image: grafana/grafana:latest
+    container_name: shrimp-grafana
+    ports:
+      - "3001:3000"
+    volumes:
+      - grafana-data:/var/lib/grafana
+      - ./deployment/grafana-dashboards:/etc/grafana/provisioning/dashboards:ro
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_PASSWORD:-admin123}
+      - GF_INSTALL_PLUGINS=
+    depends_on:
+      - prometheus
+    networks:
+      - shrimp-network
+    restart: unless-stopped
+
+# ============================================
+# Networks
+# ============================================
+networks:
+  shrimp-network:
+    driver: bridge
+
+# ============================================
+# Volumes
+# ============================================
+volumes:
+  redis-data:
+    driver: local
+  prometheus-data:
+    driver: local
+  grafana-data:
+    driver: local
