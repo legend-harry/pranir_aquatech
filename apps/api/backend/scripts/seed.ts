@@ -30,15 +30,31 @@ if (!force) {
   process.exit(0);
 }
 
+// Load Firebase config from environment variables
+// Make sure to have .env file with FIREBASE_* variables
 const firebaseConfig = {
-  apiKey: "AIzaSyCj9yaVKWE2Q60rXCn9SIAUrqBEJ14r3ZE",
-  authDomain: "praniraqua.firebaseapp.com",
-  projectId: "praniraqua",
-  storageBucket: "praniraqua.firebasestorage.app",
-  messagingSenderId: "1040296367403",
-  appId: "1:1040296367403:web:37d5c6af092318a086e16e",
-  measurementId: "G-T3GLKYSX70"
+  apiKey: process.env.FIREBASE_API_KEY || "",
+  authDomain: process.env.FIREBASE_AUTH_DOMAIN || "",
+  projectId: process.env.FIREBASE_PROJECT_ID || "",
+  storageBucket: process.env.FIREBASE_STORAGE_BUCKET || "",
+  messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID || "",
+  appId: process.env.FIREBASE_APP_ID || "",
+  measurementId: process.env.FIREBASE_MEASUREMENT_ID || ""
 };
+
+// Validate configuration
+if (!firebaseConfig.apiKey || !firebaseConfig.projectId) {
+  console.error("❌ Error: Firebase configuration not found in environment variables.");
+  console.error("Please create a .env file in the backend directory with:");
+  console.error("  FIREBASE_API_KEY=your_api_key");
+  console.error("  FIREBASE_PROJECT_ID=your_project_id");
+  console.error("  FIREBASE_AUTH_DOMAIN=your_auth_domain");
+  console.error("  FIREBASE_STORAGE_BUCKET=your_storage_bucket");
+  console.error("  FIREBASE_MESSAGING_SENDER_ID=your_sender_id");
+  console.error("  FIREBASE_APP_ID=your_app_id");
+  console.error("  FIREBASE_MEASUREMENT_ID=your_measurement_id");
+  process.exit(1);
+}
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);

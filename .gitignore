@@ -1,14 +1,23 @@
+# ============================================
+# Pranir AquaTech - Git Ignore Configuration
+# ============================================
+
 # Dependencies
 node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-package-lock.json
+pnpm-debug.log*
+.pnp
+.pnp.js
 
 # Build output
 dist/
 build/
+out/
+.next/
 .cache/
+*.tsbuildinfo
 
 # Environment variables
 .env
@@ -16,37 +25,79 @@ build/
 .env.development.local
 .env.test.local
 .env.production.local
+.env*.local
 
 # macOS
 .DS_Store
 .AppleDouble
 .LSOverride
 ._*
+.Spotlight-V100
+.Trashes
 
-# IDE
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux
+*~
+
+# IDE & Editors
 .vscode/
+!.vscode/extensions.json
 .idea/
 *.swp
 *.swo
-*~
+*.sublime-project
+*.sublime-workspace
 
 # Logs
 logs/
 *.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
 
 # Temporary files
 tmp/
 temp/
 *.tmp
+.temp/
 
 # Python
 __pycache__/
 *.py[cod]
 *$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
 
-# Sample/test folders (if not needed)
-sample/
+# Firebase
+.firebase/
+firebase-debug.log
+firestore-debug.log
+ui-debug.log
+.firebaserc
 
-# Firebase config (if you want to keep credentials private)
-# Uncomment if needed:
-# ai-aqua-app/src/firebase.js
+# Testing
+coverage/
+.nyc_output
+*.lcov
+
+# Misc
+*.pid
+*.seed
+*.pid.lock
+.npm
+.eslintcache
+.node_repl_history
+
+# Optional npm cache
+.npm
+
+# Optional REPL history
+.node_repl_history

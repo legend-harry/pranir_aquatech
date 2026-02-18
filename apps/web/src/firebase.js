@@ -2,16 +2,18 @@ import { initializeApp } from 'firebase/app';
 import { getAuth, signInAnonymously, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 import { getDatabase, ref, set, get, update } from 'firebase/database';
 
-// Firebase configuration
+// Firebase configuration - Legacy Vite app (deprecated)
+// NOTE: This file is part of the deprecated Vite app on port 5173
+// The active Next.js app uses /apps/web/frontend/src/lib/firebase.ts
 const firebaseConfig = {
-  apiKey: "AIzaSyAK3LFTspDBFNNCL-T1sddV5jA24kQwO5U",
-  authDomain: "pranir-b1aef.firebaseapp.com",
-  databaseURL: "https://pranir-b1aef-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "pranir-b1aef",
-  storageBucket: "pranir-b1aef.firebasestorage.app",
-  messagingSenderId: "841925895331",
-  appId: "1:841925895331:web:7b2281710e70b44dda0b16",
-  measurementId: "G-VZ5WG3FZ8Z"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY || "",
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN || "",
+  databaseURL: import.meta.env.VITE_FIREBASE_DATABASE_URL || "",
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID || "",
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET || "",
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID || "",
+  appId: import.meta.env.VITE_FIREBASE_APP_ID || "",
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID || ""
 };
 
 // Initialize Firebase

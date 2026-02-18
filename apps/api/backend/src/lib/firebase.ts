@@ -8,14 +8,14 @@ import { getStorage } from "firebase/storage";
 
 // Pranir-AquaTech Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCj9yaVKWE2Q60rXCn9SIAUrqBEJ14r3ZE",
-  authDomain: "praniraqua.firebaseapp.com",
-  databaseURL: "https://praniraqua-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "praniraqua",
-  storageBucket: "praniraqua.firebasestorage.app",
-  messagingSenderId: "1040296367403",
-  appId: "1:1040296367403:web:37d5c6af092318a086e16e",
-  measurementId: "G-T3GLKYSX70"
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY || "",
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN || "",
+  databaseURL: process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL || "",
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID || "",
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET || "",
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID || "",
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID || "",
+  measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID || ""
 };
 
 // Initialize Firebase
